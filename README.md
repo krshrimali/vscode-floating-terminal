@@ -1,0 +1,1 @@
+# vscode-floating-terminal
