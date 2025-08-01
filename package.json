@@ -1,0 +1,205 @@
+{
+  "name": "vscode-floating-terminal",
+  "displayName": "Floating Terminal",
+  "description": "A beautiful floating terminal for VS Code with Neovim-like functionality and comprehensive keymaps",
+  "version": "1.0.0",
+  "publisher": "floating-terminal",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Keymaps"
+  ],
+  "keywords": [
+    "terminal",
+    "floating",
+    "neovim",
+    "popup",
+    "overlay"
+  ],
+  "activationEvents": [
+    "onCommand:floating-terminal.toggle",
+    "onCommand:floating-terminal.new",
+    "onCommand:floating-terminal.close",
+    "onCommand:floating-terminal.closeAll",
+    "onCommand:floating-terminal.next",
+    "onCommand:floating-terminal.previous",
+    "onCommand:floating-terminal.focus",
+    "onCommand:floating-terminal.settings"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "floating-terminal.toggle",
+        "title": "Toggle Floating Terminal",
+        "category": "Floating Terminal"
+      },
+      {
+        "command": "floating-terminal.new",
+        "title": "New Floating Terminal",
+        "category": "Floating Terminal"
+      },
+      {
+        "command": "floating-terminal.close",
+        "title": "Close Current Floating Terminal",
+        "category": "Floating Terminal"
+      },
+      {
+        "command": "floating-terminal.closeAll",
+        "title": "Close All Floating Terminals",
+        "category": "Floating Terminal"
+      },
+      {
+        "command": "floating-terminal.next",
+        "title": "Next Floating Terminal",
+        "category": "Floating Terminal"
+      },
+      {
+        "command": "floating-terminal.previous",
+        "title": "Previous Floating Terminal",
+        "category": "Floating Terminal"
+      },
+      {
+        "command": "floating-terminal.focus",
+        "title": "Focus Floating Terminal",
+        "category": "Floating Terminal"
+      },
+      {
+        "command": "floating-terminal.settings",
+        "title": "Floating Terminal Settings",
+        "category": "Floating Terminal"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "floating-terminal.toggle",
+        "key": "ctrl+`",
+        "mac": "cmd+`",
+        "when": "!terminalFocus"
+      },
+      {
+        "command": "floating-terminal.toggle",
+        "key": "ctrl+`",
+        "mac": "cmd+`",
+        "when": "terminalFocus"
+      },
+      {
+        "command": "floating-terminal.new",
+        "key": "ctrl+shift+`",
+        "mac": "cmd+shift+`"
+      },
+      {
+        "command": "floating-terminal.close",
+        "key": "ctrl+shift+w",
+        "mac": "cmd+shift+w",
+        "when": "terminalFocus"
+      },
+      {
+        "command": "floating-terminal.closeAll",
+        "key": "ctrl+shift+alt+w",
+        "mac": "cmd+shift+alt+w"
+      },
+      {
+        "command": "floating-terminal.next",
+        "key": "ctrl+pagedown",
+        "mac": "cmd+pagedown",
+        "when": "terminalFocus"
+      },
+      {
+        "command": "floating-terminal.previous",
+        "key": "ctrl+pageup",
+        "mac": "cmd+pageup",
+        "when": "terminalFocus"
+      },
+      {
+        "command": "floating-terminal.focus",
+        "key": "ctrl+shift+`",
+        "mac": "cmd+shift+`",
+        "when": "!terminalFocus"
+      },
+      {
+        "command": "floating-terminal.settings",
+        "key": "ctrl+shift+,",
+        "mac": "cmd+shift+,",
+        "when": "terminalFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Floating Terminal",
+      "properties": {
+        "floating-terminal.width": {
+          "type": "number",
+          "default": 80,
+          "minimum": 20,
+          "maximum": 95,
+          "description": "Width of the floating terminal as percentage of editor width"
+        },
+        "floating-terminal.height": {
+          "type": "number",
+          "default": 60,
+          "minimum": 20,
+          "maximum": 95,
+          "description": "Height of the floating terminal as percentage of editor height"
+        },
+        "floating-terminal.borderRadius": {
+          "type": "number",
+          "default": 8,
+          "minimum": 0,
+          "maximum": 20,
+          "description": "Border radius of the floating terminal in pixels"
+        },
+        "floating-terminal.opacity": {
+          "type": "number",
+          "default": 0.95,
+          "minimum": 0.1,
+          "maximum": 1.0,
+          "description": "Opacity of the floating terminal background"
+        },
+        "floating-terminal.blur": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable backdrop blur effect"
+        },
+        "floating-terminal.animation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable smooth animations"
+        },
+        "floating-terminal.shell": {
+          "type": "string",
+          "default": "",
+          "description": "Custom shell path (leave empty for system default)"
+        },
+        "floating-terminal.startupDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "Custom startup directory (leave empty for workspace root)"
+        },
+        "floating-terminal.fontSize": {
+          "type": "number",
+          "default": 14,
+          "minimum": 8,
+          "maximum": 24,
+          "description": "Font size for the terminal"
+        },
+        "floating-terminal.fontFamily": {
+          "type": "string",
+          "default": "Fira Code, Consolas, Monaco, monospace",
+          "description": "Font family for the terminal"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  }
+}
